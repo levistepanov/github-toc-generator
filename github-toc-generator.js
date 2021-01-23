@@ -46,22 +46,52 @@ function echoBot(arr) {
 	}
 };
 
-function createLinks() {
+function createLinks(hType = null) {
+	let searchType = null;
+	if ((typeof(hType) !=null) && (typeof(hType) == 'string')) {
+		if (hType.toLowerCase() == 'h1') {
+			searchType = ["h1"];
+		} else if (hType.toLowerCase() == 'h2') {
+			searchType = ["h1","h2"];
+		} else if (hType.toLowerCase() == 'h3') {
+			searchType = ["h1","h2","h3"];
+		} else if (hType.toLowerCase() == 'h4') {
+			searchType = ["h1","h2","h3","h4"];
+		}
+	}
+	
 	let aaa = document.getElementsByTagName('a');
+	
 	let allLinks = {};
 		allLinks.top = [];
 		allLinks.bot = [];
 		allLinks.original = aaa;
 	for (let i=0; i < aaa.length; i++) {
 		let currentId = aaa[i].id;
+		let currentParentName = aaa[i].parentElement.localName;
 		//console.log(">>> " + currentId);
 		let currentHref = aaa[i].href;
+		
 		//console.log("<<<< " + currentHref);
+		
 		if ((!!currentId) && (currentId !="") && (currentId.toLowerCase().indexOf('user-content-') > -1)) {
 			//console.log("PUSHED: TRUE " + currentId);
 			let cutId = currentId.split('user-content-')[1];
-			allLinks.top.push('* [' + addCapsToString(cutId.replace(/-/g,' ')) + ']' + '[' + cutId + ']');
-			allLinks.bot.push('[' + cutId + ']:' + currentHref);
+			
+			if ((!!searchType) && (searchType.length > 0)) {
+				for (let x = 0; x < searchType.length; x++) {
+					let currentSearchName = searchType[x];
+					if (currentParentName == currentSearchName) {
+						
+						allLinks.top.push('* [' + addCapsToString(cutId.replace(/-/g,' ')) + ']' + '[' + cutId + ']');
+						allLinks.bot.push('[' + cutId + ']:' + currentHref);
+					}
+				}
+			} else {
+				// do all anchors on page
+				allLinks.top.push('* [' + addCapsToString(cutId.replace(/-/g,' ')) + ']' + '[' + cutId + ']');
+				allLinks.bot.push('[' + cutId + ']:' + currentHref);
+			}	
 		} else {
 			//console.log("PUSHED: FALSE " + currentId);
 		}
