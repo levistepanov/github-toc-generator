@@ -51,6 +51,7 @@ function createLinks() {
 	let allLinks = {};
 		allLinks.top = [];
 		allLinks.bot = [];
+		allLinks.original = aaa;
 	for (let i=0; i < aaa.length; i++) {
 		let currentId = aaa[i].id;
 		//console.log(">>> " + currentId);
