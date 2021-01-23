@@ -1,7 +1,6 @@
 /*
 FORMAT OF GITHUB SIDEBAR
 
-# Contents
 * [Home][home]
 * [Change Log][changelog]
 * [Overview][overview]
