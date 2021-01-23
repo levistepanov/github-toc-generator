@@ -11,7 +11,7 @@ Left emtpy e.g., `createLinks()` will create links for all headings on the page.
 1. Simply open the Developers console on the page you want to create a TOC for.
 2. paste the code and run it.
 3. copy the results to an editor (notepad++)
-4. replace the chrome line numbers with "". There will be 2 different line numbers to remove, the top section line number and the bottom.
+4. replace the chrome line numbers with "". There will be 3 different line numbers to remove, the top section line number, the bottom section line numbers and the 2 empty lines in between.
   i.e., replace "VM1726:22 " with ""
 5. paste the result into your Github sidebar .md file.
 
