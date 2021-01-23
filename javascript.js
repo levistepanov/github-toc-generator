@@ -11,10 +11,35 @@ FORMAT OF GITHUB SIDEBAR
 [overview]:https://github.com/youruser/yourRepo/wiki#overview
 */
 
+function addCapsToString(str) {
+	const capitalize = (s) => {
+		if (typeof s !== 'string') return ''
+		return s.charAt(0).toUpperCase() + s.slice(1)
+	};
+	let oldString = str;
+	let splitStringArr = oldString.split(" ");
+	let newStringArr=[];
+	let returnString = null;
+	for (let i=0; i < splitStringArr.length; i++) {
+		let newString = null;
+		if ( i != splitStringArr.length -1) {
+			newString = capitalize(splitStringArr[i]) + " ";
+		} else {
+			newString = capitalize(splitStringArr[i]);
+		}
+		newStringArr.push(newString)
+	}
+	returnString = newStringArr.join(" ");
+	return returnString;
+	
+};
+
 function echoTop(arr) {
 	for (let i = 0; i < arr.length; i++) {
 		console.log(arr[i]);
 	}
+	console.log("  ");
+	console.log("  ");
 };
 
 function echoBot(arr) {
@@ -36,7 +61,7 @@ function createLinks() {
 		if ((!!currentId) && (currentId !="") && (currentId.toLowerCase().indexOf('user-content-') > -1)) {
 			//console.log("PUSHED: TRUE " + currentId);
 			let cutId = currentId.split('user-content-')[1];
-			allLinks.top.push('* [' + cutId.replace(/-/g,' ') + ']' + '[' + cutId + ']');
+			allLinks.top.push('* [' + addCapsToString(cutId.replace(/-/g,' ')) + ']' + '[' + cutId + ']');
 			allLinks.bot.push('[' + cutId + ']:' + currentHref);
 		} else {
 			//console.log("PUSHED: FALSE " + currentId);
