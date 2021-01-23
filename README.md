@@ -1,5 +1,5 @@
 # github-toc-generator
-helps create a table of contents for Github sidebar without needing to clone the repo
+helps create a table of contents for Github sidebar without needing to clone the repo or install 3rd party libraries
 
 Usage: 
 This was only tested/used in Chrome
