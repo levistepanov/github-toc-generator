@@ -17,3 +17,4 @@ Left emtpy e.g., `createLinks()` will create links for all headings on the page.
 
 If something isn't working, be sure you have empyty lines between the top part and the bottom part in your MD file and that you have also removed the trailing space after the Chrome line numbers.
   
+Be sure that the Chrome Dev Console has timestamps turned off prior to running this code, or you will also have to remove the timestamps.
